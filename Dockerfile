@@ -1,16 +1,17 @@
-# We will use python:3.10-alpine as the base image for building the Flask container
-FROM python:3.10-alpine
+FROM python:3.9-slim-buster
 
-# Sets Env variable for message
-ENV MESSAGE = "Automate all the things!"
-
-# It specifies the working directory where the Docker container will run
 WORKDIR /app
-# Copying all the application files to the working directory
-COPY . .
-# Install all the dependencies required to run the Flask application
+COPY . /app
+
 RUN pip install -r requirements.txt
-# Expose the Docker container for the application to run on port 5000
-EXPOSE 5000
-# The command required to run the Dockerized application
-CMD ["python", "/app/app.py"]
+
+# Sets the default message variable
+ENV MESSAGE="Automate all the things!"
+ENV PORT="80"
+# Port 80 is exposed in Azure by default for AKS traffic
+# Port 3000 is exposed for local docker containers
+# Port 5000 is used by ControlCenter on MacOS
+EXPOSE 80 3000
+
+# Executes the application
+CMD python ./app.py
