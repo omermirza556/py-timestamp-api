@@ -8,16 +8,20 @@ import os
 
 # Passes MESSAGE environment variable to the request.
 # Allows for easier modification without App redeployment.
-theMessage = os.environ['MESSAGE']
+
 app = Flask(__name__)
 
 # Returns UNIX time when called by GET or POST request.
 @app.route('/', methods = ['GET', 'POST'])
 def returnTime():
     unixTime = int(time())
+    theMessage = os.environ['MESSAGE']
     return jsonify(
         {
             'message': theMessage,
             'timestamp': unixTime
         }
     )
+    
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True)
