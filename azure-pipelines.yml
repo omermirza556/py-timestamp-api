@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool:
+  name: self-hosted
+
+steps:
+- script: echo Processing...
+  displayName: 'Run a one-line script'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+- script: |
+    echo Complete
+  displayName: 'Run a one-line script'
