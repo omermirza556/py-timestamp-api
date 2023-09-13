@@ -11,6 +11,7 @@ steps:
   inputs:
     scriptSource: 'inline'
     script: 'python3 -m pytest test.py'
+    pythonInterpreter: '/usr/bin/python3'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)'
