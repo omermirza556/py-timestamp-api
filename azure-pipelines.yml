@@ -10,6 +10,11 @@ steps:
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
+    script: 'pip install pytest pytest-azurepipelines'
+    pythonInterpreter: '/usr/bin/python3'
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
     script: 'python3 -m pytest test.py'
     pythonInterpreter: '/usr/bin/python3'
 - task: CopyFiles@2
