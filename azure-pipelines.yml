@@ -7,6 +7,14 @@ pool:
 steps:
 - script: echo Processing...
   displayName: 'Run a one-line script'
+- script: |
+    python -m pip install --upgrade pip
+    pip install pytest pytest-azurepipelines
+    pip install -e .
+  displayName: 'Install dependencies'
+- script: |
+    python -m pytest tests.py
+  displayName: 'pytest'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)'
