@@ -66,6 +66,43 @@ flask --app app --debug run
 ```
 The above code launches the flask application in debug mode for testing.
 
+# Requirements for running locally in VSCode
+**launch.json** file - used to launch the application as a localhost web service.
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Flask",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "app.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        }
+    ]
+}
+```
+
+**.env file** - Sets up the local environment with a defined variable that will be used in the code.
+
+```
+MESSAGE = "Automate all the things!"
+```
+
 # Questions
 - - - 
 ## What is Flask?
