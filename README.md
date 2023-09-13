@@ -53,6 +53,19 @@ EXPOSE 80 3000
 The important thing to note with this file is that two environment variables are set by default. 
 - When deploying arguments can be set to change these environment variables when the container is being created. 
 - In effect, the message displayed to the end user and the exposed port can be modified by creating a new container instead of modifying the python code or the dockerfile.
+
+# Some important commands
+```shell
+python -m pytest test.py   
+```
+
+The above code can be run in terminal to execute unit tests for this project.
+
+```shell
+flask --app app --debug run   
+```
+The above code launches the flask application in debug mode for testing.
+
 # Questions
 - - - 
 ## What is Flask?
