@@ -10,7 +10,7 @@ steps:
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
-    script: 'python -m pytest tests.py'
+    script: 'python3 -m pytest test.py'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)'
