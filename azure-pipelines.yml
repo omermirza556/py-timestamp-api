@@ -7,13 +7,9 @@ pool:
 steps:
 - script: echo Processing...
   displayName: 'Run a one-line script'
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      python -m pip install --upgrade pip
-      pip install pytest pytest-azurepipelines
-      pip install -e .
+
+- script: python3 -m pytest test.py
+  displayName: 'Test cases'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)'
